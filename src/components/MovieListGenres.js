@@ -14,7 +14,7 @@ const MovieListGenres=()=>{
         
     ]
     return(
-            <Grid className='mainGrid' sx={{display:'flex',gap:2,columnGap:1,rowGap:1,padding:2,flexWrap:'wrap',height:800 }}>
+            <Grid className='mainGrid' sx={{display:'flex',gap:2,backgroundColor:'yellow',padding:2,flexWrap:'wrap' }}>
                 {/* <Card sx={{display:'flex',gap:2}}>
                      <Typography variant='h2'>
                        card1
