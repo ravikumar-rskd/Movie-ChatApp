@@ -67,9 +67,6 @@ padding: 10px ;
   left: 0;
 }
 .movielist{
-  display: flex;
-  background-color: white;
-}
-.mainGrid{
- 
+  display:flex;
+  margin: 10px 500px 10px;
 }

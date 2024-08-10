@@ -2,24 +2,31 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header';
 import { Box,Grid } from '@mui/material';
+import Chat from './components/Chat';
+import SideMenu from './components/SideMenu';
 // import { BrowserRouter as Router } from 'react-router-dom';
 // import { Route, Routes } from 'react-router-dom';
-import MovieListGenres from './components/MovieListGenres';
+// import MovieListGenres from './components/MovieListGenres';
 // import MovieDetails from './components/MovieDetails';
 
 function App() {
   return (
     <div >
      <Header/>
-     <div className='movielist'>
-     <Box display={'flex'} >
-      <Grid container sx={{backgroundColor:'black'}} >
+     <Grid container>
       <Grid item>
-        <MovieListGenres/>
-      </Grid>
-      </Grid>
+     <SideMenu/>
+     </Grid>
+     <Grid item>
+     {/* <div className='movielist'> */}
+     {/* <Grid container sx={{backgroundColor:'yellow',alignContent:'center',alignItems:'center'}} >
+     <Grid item > */}
+     <Box display={'flex'} sx={{width:600,height:400,justifyContent:'center',backgroundColor:'red',padding:5}}>
+       <Chat/>
      </Box>
-     </div>
+     {/* </div> */}
+     </Grid>
+     </Grid>
     </div>
     
     

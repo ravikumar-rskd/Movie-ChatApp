@@ -6,9 +6,9 @@ import { Box,  Button,  Typography } from '@mui/material';
 const Header=()=>{
   // const navigate=useNavigate();
     return( 
-    <Box display={'flex'} gap={2} sx={{color:'red',backgroundColor:'black',padding:1}}>
+    <Box display={'flex'} gap={2} sx={{color:'yellow',backgroundColor:'black',padding:1}}>
         <Typography variant='h4'sx={{fontWeight:'bold'}} >
-          NETFLIX
+          Have Fun..!
         </Typography>
         <nav className='headNav' >
          <Button>HOME</Button>
