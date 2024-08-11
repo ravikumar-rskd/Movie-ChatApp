@@ -25,11 +25,11 @@ const SideMenu=({users})=>{
                 {showUsers ? "Hide Users" : "Show Users"}
                 </Button>
                 {showUsers &&
-                (<Box sx={{ marginTop: 2 }}>
+                (<Box sx={{ marginTop: 2,display:'flex',flexDirection:'column' }}>
                     {users.map((user, index) => (
-                        <div key={index} sx={{ marginBottom: 1 }}>
+                        <Button key={index} variant='outlined' sx={{ marginBottom: 1,'&:hover':{backgroundColor:'yellow'}}}>
                             {user}
-                        </div>
+                        </Button>
                     ))}
                 </Box>
             )}
