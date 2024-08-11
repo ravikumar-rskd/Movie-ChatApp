@@ -59,22 +59,32 @@
 // };
 // export default Chat;
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState,useEffect,useRef } from "react";
 import { Box, Card, IconButton } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete'; // Import Material-UI Delete Icon
 
-const Chat = () => {
-    const [user, setUser] = useState('');
+
+
+const Chat = ({userData}) => {
+    const [user, setUser] = useState([]);
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const boxRef = useRef(null);
 
+
     const handleSubmit = (e) => {
+        console.log('submitted');
         e.preventDefault();
         if (user && message) {
-            setMessages([...messages, { id: Date.now(), text: `${user}: ${message}` }]);
+            setMessages([...messages,{ id: Date.now(), text: `${user}: ${message}` } ]);
             setMessage('');
+            // userData(setMessages([messages]));
+            userData(prevUsers => [...new Set([...prevUsers, user])]);
         }
+        
+        // const msg=getMessages(responses.data.id)
+        
+        
         console.log("Username:"+user+",Msg:"+message);
         
     };
@@ -101,9 +111,9 @@ const Chat = () => {
                         width: 200,
                         height: 200,
                         marginBottom: 1,
-                        overflowY: 'auto',
+                        overflowY: 'auto',//for scrolling feature inside box when reach to end of the box
                         display: 'flex',
-                        flexDirection: 'column',
+                        flexDirection: 'column',//
                     }}
                 >
                     {messages.map((msg) => (

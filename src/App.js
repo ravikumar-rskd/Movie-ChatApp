@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Header from './components/Header';
 import { Box,Grid } from '@mui/material';
@@ -10,22 +10,19 @@ import SideMenu from './components/SideMenu';
 // import MovieDetails from './components/MovieDetails';
 
 function App() {
+  const [users,setUsers]=useState([]);
   return (
     <div >
      <Header/>
      <Grid container>
-      <Grid item>
-     <SideMenu/>
-     </Grid>
-     <Grid item>
-     {/* <div className='movielist'> */}
-     {/* <Grid container sx={{backgroundColor:'yellow',alignContent:'center',alignItems:'center'}} >
-     <Grid item > */}
-     <Box display={'flex'} sx={{width:600,height:400,justifyContent:'center',backgroundColor:'red',padding:5}}>
-       <Chat/>
-     </Box>
-     {/* </div> */}
-     </Grid>
+        <Grid item>
+          <SideMenu users={users}/>
+        </Grid>
+          <Grid item>
+            <Box display={'flex'} sx={{width:600,height:400,justifyContent:'center',backgroundColor:'grey',padding:5,marginTop:1}}>
+              <Chat userData={setUsers}/>
+            </Box>
+          </Grid>
      </Grid>
     </div>
     
