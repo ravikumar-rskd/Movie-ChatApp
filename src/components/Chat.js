@@ -65,21 +65,31 @@ import DeleteIcon from '@mui/icons-material/Delete'; // Import Material-UI Delet
 
 
 
-const Chat = ({userData}) => {
+const Chat = ({userData,msgData}) => {
     const [user, setUser] = useState([]);
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const boxRef = useRef(null);
 
+    useEffect(()=>{
+        alert("You will not be able to find recent message at left side for User's Messages ");
+    },[]
+
+    );
 
     const handleSubmit = (e) => {
         console.log('submitted');
+        console.log(message);
+        
         e.preventDefault();
         if (user && message) {
             setMessages([...messages,{ id: Date.now(), text: `${user}: ${message}` } ]);
             setMessage('');
             // userData(setMessages([messages]));
             userData(prevUsers => [...new Set([...prevUsers, user])]);
+            console.log(messages);
+            msgData(messages);
+            
         }
         
         // const msg=getMessages(responses.data.id)
@@ -90,19 +100,7 @@ const Chat = ({userData}) => {
     };
 
     const handleDelete = (id) => {
-        // setMessages(messages.filter(msg => msg.id !== id));
-        setMessages(prevMessages => {
-            const updatedMessages = prevMessages.filter(msg => msg.id !== id);
-            
-            // Check if the deleted message was the last one from a user
-            const remainingMessagesFromUser = updatedMessages.filter(msg => msg.user === user);
-
-            if (remainingMessagesFromUser.length === 0) {
-                userData(prevUsers => prevUsers.filter(u => u !== user));
-            }
-
-            return updatedMessages;
-        });
+        setMessages(messages.filter(msg => msg.id !== id));
     };
 
     useEffect(() => {

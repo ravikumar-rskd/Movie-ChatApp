@@ -11,16 +11,23 @@ import SideMenu from './components/SideMenu';
 
 function App() {
   const [users,setUsers]=useState([]);
+  const [messages, setMessages] = useState([]);
+
+  const handleUpdateMessages = (messages) => {
+    console.log("App page-msgs:",messages)
+    setMessages(messages);
+  };
+
   return (
     <div >
      <Header/>
      <Grid container>
         <Grid item>
-          <SideMenu users={users}/>
+          <SideMenu users={users} messages={messages}/>
         </Grid>
           <Grid item>
             <Box display={'flex'} sx={{width:600,height:400,justifyContent:'center',backgroundColor:'grey',padding:5,marginTop:1}}>
-              <Chat userData={setUsers}/>
+              <Chat userData={setUsers} msgData={handleUpdateMessages} />
             </Box>
           </Grid>
      </Grid>
