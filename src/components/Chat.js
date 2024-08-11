@@ -90,7 +90,19 @@ const Chat = ({userData}) => {
     };
 
     const handleDelete = (id) => {
-        setMessages(messages.filter(msg => msg.id !== id));
+        // setMessages(messages.filter(msg => msg.id !== id));
+        setMessages(prevMessages => {
+            const updatedMessages = prevMessages.filter(msg => msg.id !== id);
+            
+            // Check if the deleted message was the last one from a user
+            const remainingMessagesFromUser = updatedMessages.filter(msg => msg.user === user);
+
+            if (remainingMessagesFromUser.length === 0) {
+                userData(prevUsers => prevUsers.filter(u => u !== user));
+            }
+
+            return updatedMessages;
+        });
     };
 
     useEffect(() => {
